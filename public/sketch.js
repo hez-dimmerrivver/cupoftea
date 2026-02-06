@@ -1,6 +1,14 @@
 const { Engine, World, Bodies, Composite } = Matter;
 const socket = io();
 
+// Reference to the participant counter element
+const participantEl = document.getElementById("participant-count");
+
+// Listen for server updates on total participants
+socket.on("participantCount", (count) => {
+  if (participantEl) participantEl.innerText = `Total participants: ${count}`;
+});
+
 //full shared world state sent by the server, so this will be null until server responds
 let space = null;
 
