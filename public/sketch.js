@@ -14,24 +14,24 @@ let gui;
 let logEl;
 
 let genreColors = {
-  Horror: "#FF1800",
-  Romance: "#F699FF",
-  "Sci-Fi": "#547CFF",
-  Documentary: "#A66B20",
-  Action: "#FB6C00",
-  Musical: "#8A3BEE",
-  Thriller: "#9EE0A9",
+  HORROR: "#FF1800",
+  ROMANCE: "#FF73C4",
+  "SCI-FI": "#7BA4FF",
+  DOCUMENTARY: "#a29312",
+  ACTION: "#FC7D2D",
+  MUSICAL: "#9186e4",
+  THRILLER: "#3CA87B",
 };
 
 let engine, world;
 let genres = [
-  "Horror",
-  "Romance",
-  "Sci-Fi",
-  "Documentary",
-  "Action",
-  "Musical",
-  "Thriller",
+  "HORROR",
+  "ROMANCE",
+  "SCI-FI",
+  "DOCUMENTARY",
+  "ACTION",
+  "MUSICAL",
+  "THRILLER",
 ];
 let checkboxes = [];
 let genreInstances = [];
@@ -53,9 +53,10 @@ let radius;
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
+  radius = width / 8 + height / 10;
   centerX = width / 2;
-  centerY = 400;
-  radius = 300;
+  centerY = height / 2;
+
   canvas.parent("sketch-container");
 
   //grab the log element from the DOM
@@ -127,13 +128,13 @@ function draw() {
   background(210, 215, 225);
   Engine.update(engine);
 
-  //draw cup
+  ///draw cup
   fill(255);
   noStroke();
-  ellipse(centerX, centerY + 160, radius * 2, radius * 0.4);
+  ellipse(centerX, centerY + radius, radius * 2, radius * 0.4);
   push();
   noFill();
-  stroke(240);
+  stroke(255);
   strokeWeight(15);
   bezier(
     centerX + radius * 0.7,
@@ -153,7 +154,7 @@ function draw() {
 
   for (let i = 0; i < radius; i++) {
     let alpha = map(i, 0, radius, 10, 0);
-    fill(210, 215, 225, alpha);
+    fill(220, 225, 230, alpha);
     arc(centerX, centerY, radius * 2 - i * 4, radius * 2 - i * 4, 0, PI);
   }
 
@@ -169,7 +170,7 @@ function draw() {
 
   // Show participant count on the canvas
   fill(0);
-  textSize(18);
+  textSize(16);
   textAlign(RIGHT);
   text(`Participants: ${participantCount}`, width - 20, 100);
 

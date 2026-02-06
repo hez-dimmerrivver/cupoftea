@@ -5,8 +5,8 @@ class Box {
     this.col = col;
 
     textSize(18);
-    let tw = textWidth(this.label) + 15;
-    let th = 25;
+    let tw = textWidth(this.label);
+    let th = 18;
 
     this.body = Bodies.rectangle(x, y, tw, th, {
       restitution: 0.5,
