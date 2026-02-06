@@ -130,6 +130,25 @@ function draw() {
   //draw cup
   fill(255);
   noStroke();
+  ellipse(centerX, centerY + 160, radius * 2, radius * 0.4);
+  push();
+  noFill();
+  stroke(240);
+  strokeWeight(15);
+  bezier(
+    centerX + radius * 0.7,
+    centerY + radius * 0.3,
+    centerX + radius * 1.4,
+    centerY - radius * 0.3,
+    centerX + radius * 1.6,
+    centerY + radius * 0.9,
+    centerX + radius * 0.3,
+    centerY + radius * 0.7,
+  );
+  pop();
+
+  fill(255);
+  noStroke();
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
 
   for (let i = 0; i < radius; i++) {
@@ -141,7 +160,7 @@ function draw() {
   //UI
   noStroke();
   fill(0);
-  textSize(22);
+  textSize(32);
   textAlign(LEFT);
   text("My Cup of Tea", 20, 40);
   textSize(16);
@@ -151,8 +170,8 @@ function draw() {
   // Show participant count on the canvas
   fill(0);
   textSize(18);
-  textAlign(LEFT);
-  text(`Participants: ${participantCount}`, 20, 100);
+  textAlign(RIGHT);
+  text(`Participants: ${participantCount}`, width - 20, 100);
 
   //show my choice
   for (let inst of genreInstances) {
