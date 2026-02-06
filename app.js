@@ -24,9 +24,18 @@ io.on("connection", (socket) => {
 
   socket.on("updateSelection", ({ genre, checked }) => {
     if (checked) {
-      if (!allSelections.includes(genre)) allSelections.push(genre);
+      //accumulate
+      allSelections.push(genre);
+      //max:100
+      if (allSelections.length > 100) {
+        allSelections.shift(); //delete
+      }
     } else {
-      allSelections = allSelections.filter((g) => g !== genre);
+      //uncheck
+      const idx = allSelections.lastIndexOf(genre);
+      if (idx !== -1) {
+        allSelections.splice(idx, 1);
+      }
     }
 
     io.emit("allSelections", allSelections);

@@ -111,14 +111,7 @@ function setup() {
 
 function handleCheckboxChange() {
   let genre = this.attribute("data-genre");
-
-  if (this.checked()) {
-    addTextBody(genre);
-    sendDataToNode(genre, true);
-  } else {
-    removeTextBody(genre);
-    sendDataToNode(genre, false);
-  }
+  sendDataToNode(genre, this.checked());
 }
 
 function draw() {
