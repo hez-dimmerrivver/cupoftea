@@ -1,12 +1,8 @@
 const { Engine, World, Bodies, Composite } = Matter;
 const socket = io();
 
-// Reference to the participant counter element
-const participantEl = document.getElementById("participant-count");
-
-// Listen for server updates on total participants
 socket.on("participantCount", (count) => {
-  if (participantEl) participantEl.innerText = `Total participants: ${count}`;
+  participantCount = count;
 });
 
 //full shared world state sent by the server, so this will be null until server responds
@@ -39,11 +35,13 @@ let genres = [
 ];
 let checkboxes = [];
 let genreInstances = [];
-// 當 server 廣播所有人的選擇時
+let participantCount = 0;
+
+//broadcast
 socket.on("allSelections", (selections) => {
-  // 清掉舊的 Box
+  //clean old boxes
   genreInstances = [];
-  // 每個 genre 生成 Box
+  //generate boxes
   for (let genre of selections) {
     addTextBody(genre);
   }
@@ -51,7 +49,7 @@ socket.on("allSelections", (selections) => {
 
 const centerX = 400;
 const centerY = 400;
-const radius = 150;
+const radius = windowWidth / 3;
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
@@ -141,6 +139,12 @@ function draw() {
   textSize(16);
   textAlign(LEFT);
   text("The movie genre I like", 20, 70);
+
+  // Show participant count on the canvas
+  fill(0);
+  textSize(18);
+  textAlign(LEFT);
+  text(`Participants: ${participantCount}`, 20, 100);
 
   //show my choice
   for (let inst of genreInstances) {
