@@ -136,11 +136,11 @@ function draw() {
   ///draw cup
   fill(255);
   noStroke();
-  ellipse(centerX, centerY + radius, radius * 2, radius * 0.4);
+  ellipse(centerX, centerY + radius, radius * 2, radius * 0.3);
   push();
   noFill();
   stroke(255);
-  strokeWeight(20);
+  strokeWeight(25);
   bezier(
     centerX + radius * 0.7,
     centerY + radius * 0.3,
@@ -168,10 +168,10 @@ function draw() {
   fill(50);
   textSize(28);
   textAlign(LEFT);
-  text("My Cup of Tea", 20, 45);
+  text("What's Your Cup of Tea", 20, 45);
   textSize(16);
   textAlign(LEFT);
-  text("The movie genre I like", 20, 75);
+  text("Select the movie genre you like", 20, 75);
 
   // Show participant count on the canvas
   fill(0);
