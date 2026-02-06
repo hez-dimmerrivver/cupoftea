@@ -47,7 +47,7 @@ socket.on("allSelections", (selections) => {
   }
 });
 
-const centerX = 400;
+const centerX = width / 2;
 const centerY = 400;
 const radius = 300;
 
@@ -125,7 +125,7 @@ function draw() {
   Engine.update(engine);
 
   //draw cup
-  noFill();
+  fill(200);
   stroke(0);
   strokeWeight(3);
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
