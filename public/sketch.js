@@ -47,7 +47,7 @@ socket.on("allSelections", (selections) => {
   }
 });
 
-const centerX = width / 2;
+const centerX = 400;
 const centerY = 400;
 const radius = 300;
 
