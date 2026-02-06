@@ -105,7 +105,7 @@ function setup() {
     let genreName = genres[i];
     let col = genreColors[genres[i]];
     let cb = createCheckbox(" " + genres[i], false);
-    cb.parent("gui");
+    cb.parent("gui-container");
     cb.style("color", col);
     cb.position(20, 80 + i * 30);
     cb.addClass("genre-checkbox");
@@ -180,4 +180,8 @@ function removeTextBody(label) {
 function setLog(msg) {
   if (logEl) logEl.innerText = msg;
   console.log(msg);
+}
+
+function sendDataToNode() {
+  // 暫時不做事
 }
