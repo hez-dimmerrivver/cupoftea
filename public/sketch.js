@@ -53,7 +53,7 @@ let radius;
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
-  centerX = 400;
+  centerX = width / 2;
   centerY = 400;
   radius = 300;
   canvas.parent("sketch-container");
@@ -130,7 +130,6 @@ function draw() {
   //draw cup
   fill(240);
   noStroke();
-  strokeWeight(3);
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
 
   //UI
