@@ -51,6 +51,10 @@ let centerX;
 let centerY;
 let radius;
 
+function preload() {
+  font = loadFont("EBGaramond-VariableFont_wght.ttf");
+}
+
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
   radius = width / 8 + height / 10;
@@ -111,7 +115,7 @@ function setup() {
     let cb = createCheckbox(" " + genres[i], false);
     cb.parent("gui-container");
     cb.style("color", col);
-    cb.position(20, 80 + i * 30);
+    cb.position(20, 90 + i * 30);
     cb.addClass("genre-checkbox");
     cb.changed(handleCheckboxChange);
     cb.attribute("data-genre", genreName);
@@ -125,7 +129,8 @@ function handleCheckboxChange() {
 }
 
 function draw() {
-  background(210, 215, 225);
+  background(220, 225, 230);
+  textFont(font);
   Engine.update(engine);
 
   ///draw cup
@@ -135,7 +140,7 @@ function draw() {
   push();
   noFill();
   stroke(255);
-  strokeWeight(15);
+  strokeWeight(20);
   bezier(
     centerX + radius * 0.7,
     centerY + radius * 0.3,
@@ -160,19 +165,19 @@ function draw() {
 
   //UI
   noStroke();
-  fill(0);
-  textSize(32);
+  fill(50);
+  textSize(28);
   textAlign(LEFT);
-  text("My Cup of Tea", 20, 40);
+  text("My Cup of Tea", 20, 45);
   textSize(16);
   textAlign(LEFT);
-  text("The movie genre I like", 20, 70);
+  text("The movie genre I like", 20, 75);
 
   // Show participant count on the canvas
   fill(0);
   textSize(16);
   textAlign(RIGHT);
-  text(`Participants: ${participantCount}`, width - 20, 100);
+  text(`Participants: ${participantCount}`, width - 20, 40);
 
   //show my choice
   for (let inst of genreInstances) {
