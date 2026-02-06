@@ -53,7 +53,7 @@ function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
   centerX = width / 2;
   centerY = 400;
-  radius = 150;
+  radius = 400;
 
   canvas.parent("sketch-container");
 
