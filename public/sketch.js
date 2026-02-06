@@ -31,6 +31,15 @@ let genres = [
 ];
 let checkboxes = [];
 let genreInstances = [];
+// 當 server 廣播所有人的選擇時
+socket.on("allSelections", (selections) => {
+  // 清掉舊的 Box
+  genreInstances = [];
+  // 每個 genre 生成 Box
+  for (let genre of selections) {
+    addTextBody(genre);
+  }
+});
 
 const centerX = 400;
 const centerY = 400;
@@ -42,21 +51,6 @@ function setup() {
 
   //grab the log element from the DOM
   logEl = document.getElementById("log");
-
-  //server sends teh full world state whenver it changes, so it all gets updated
-  socket.on("state", (state) => {
-    //we overwrite our own local copy with the server's version, which prevents things falling out of sync
-    space = state;
-  });
-
-  //server tells us whether our requested actions were sucessful
-  socket.on("actionResult", (res) => {
-    if (res.ok) {
-      setLog(`${res.action}: ok`);
-    } else {
-      setLog(`${res.action}: ${res.reason}`);
-    }
-  });
 
   setLog("Connected.");
 
@@ -182,6 +176,7 @@ function setLog(msg) {
   console.log(msg);
 }
 
-function sendDataToNode() {
-  // 暫時不做事
+//sent history data
+function sendDataToNode(genre, checked) {
+  socket.emit("updateSelection", { genre, checked });
 }

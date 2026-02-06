@@ -10,39 +10,29 @@ const port = process.env.PORT || 3500;
 
 app.use(express.static("public"));
 
-let userSelections = {};
+let allSelections = [];
 server.listen(port, () => {
   console.log("listening on: " + port);
 });
 
 // Socket.io
-io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
 
-  // new user enter and see the history
-  socket.emit("allSelections", userSelections);
+io.on("connection", (socket) => {
+  console.log("user connected", socket.id);
+
+  socket.emit("allSelections", allSelections);
 
   socket.on("updateSelection", ({ genre, checked }) => {
-    if (!userSelections[socket.id]) {
-      userSelections[socket.id] = [];
-    }
-
     if (checked) {
-      if (!userSelections[socket.id].includes(genre)) {
-        userSelections[socket.id].push(genre);
-      }
+      if (!allSelections.includes(genre)) allSelections.push(genre);
     } else {
-      userSelections[socket.id] = userSelections[socket.id].filter(
-        (g) => g !== genre,
-      );
+      allSelections = allSelections.filter((g) => g !== genre);
     }
 
-    // broadcast to all people
-    io.emit("allSelections", userSelections);
+    io.emit("allSelections", allSelections);
   });
 
   socket.on("disconnect", () => {
-    delete userSelections[socket.id];
-    io.emit("allSelections", userSelections);
+    console.log("user disconnected", socket.id);
   });
 });
