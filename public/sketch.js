@@ -132,6 +132,12 @@ function draw() {
   noStroke();
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
 
+  for (let i = 0; i < radius; i++) {
+    let alpha = map(i, 0, radius, 10, 0);
+    fill(210, 215, 225, alpha);
+    arc(centerX, centerY, radius * 2 - i * 4, radius * 2 - i * 4, 0, PI);
+  }
+
   //UI
   noStroke();
   fill(0);
