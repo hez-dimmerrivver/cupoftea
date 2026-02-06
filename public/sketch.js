@@ -124,13 +124,19 @@ function handleCheckboxChange() {
 }
 
 function draw() {
-  background(255);
+  background(210, 215, 225);
   Engine.update(engine);
 
   //draw cup
-  fill(240);
+  fill(255);
   noStroke();
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
+
+  for (let i = 0; i < r; i++) {
+    let alpha = map(i, 0, radius, 10, 0);
+    fill(210, 215, 225, alpha);
+    arc(x, y, radius * 2 - i * 4, radius * 2 - i * 4, 0, PI);
+  }
 
   //UI
   noStroke();
