@@ -1,4 +1,14 @@
 const { Engine, World, Bodies, Composite } = Matter;
+const socket = io();
+
+//full shared world state sent by the server, so this will be null until server responds
+let space = null;
+
+let gui;
+
+// this is a refnerece to the log text/UI stuff in the index.html file (also in public folder)
+let logEl;
+
 let genreColors = {
   Horror: "#FF1800",
   Romance: "#F699FF",
@@ -28,6 +38,29 @@ const radius = 150;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  //grab the log element from the DOM
+  logEl = document.getElementById("log");
+
+  //server sends teh full world state whenver it changes, so it all gets updated
+  socket.on("state", (state) => {
+    //we overwrite our own local copy with the server's version, which prevents things falling out of sync
+    space = state;
+  });
+
+  //server tells us whether our requested actions were sucessful
+  socket.on("actionResult", (res) => {
+    if (res.ok) {
+      setLog(`${res.action}: ok`);
+    } else {
+      setLog(`${res.action}: ${res.reason}`);
+    }
+  });
+
+  setLog("Connected.");
+
+  gui = select("#gui-container");
+  gui.addClass("open");
 
   engine = Engine.create();
   world = engine.world;
@@ -66,20 +99,30 @@ function setup() {
 
   Composite.add(world, [bottom, leftWall, rightWall]);
 
-  //tick box(GEMINI)
+  //tick box
   for (let i = 0; i < genres.length; i++) {
+    let genreName = genres[i];
     let col = genreColors[genres[i]];
     let cb = createCheckbox(" " + genres[i], false);
-    cb.elt.style.color = col;
+    cb.parent("gui");
+    cb.style("color", col);
     cb.position(20, 80 + i * 30);
-    cb.changed(() => {
-      if (cb.checked()) {
-        addTextBody(genres[i]);
-      } else {
-        removeTextBody(genres[i]);
-      }
-    });
+    cb.addClass("genre-checkbox");
+    cb.changed(handleCheckboxChange);
+    cb.attribute("data-genre", genreName);
     checkboxes.push(cb);
+  }
+}
+
+function handleCheckboxChange() {
+  let genre = this.attribute("data-genre");
+
+  if (this.checked()) {
+    addTextBody(genre);
+    sendDataToNode(genre, true);
+  } else {
+    removeTextBody(genre);
+    sendDataToNode(genre, false);
   }
 }
 
@@ -131,4 +174,9 @@ function removeTextBody(label) {
       genreInstances.splice(i, 1); //remove from p5.js
     }
   }
+}
+
+function setLog(msg) {
+  if (logEl) logEl.innerText = msg;
+  console.log(msg);
 }
