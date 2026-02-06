@@ -47,12 +47,15 @@ socket.on("allSelections", (selections) => {
   }
 });
 
-const centerX = 400;
-const centerY = 400;
-const radius = 300;
+let centerX;
+let centerY;
+let radius;
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
+  centerX = 400;
+  centerY = 400;
+  radius = 300;
   canvas.parent("sketch-container");
 
   //grab the log element from the DOM
@@ -125,13 +128,10 @@ function draw() {
   Engine.update(engine);
 
   //draw cup
-  push();
-  translate(width / 2, 0);
   fill(240);
   noStroke();
   strokeWeight(3);
   arc(centerX, centerY, radius * 2, radius * 2, 0, PI);
-  pop();
 
   //UI
   noStroke();
