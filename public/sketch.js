@@ -37,7 +37,8 @@ const centerY = 400;
 const radius = 150;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  const canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("sketch-container");
 
   //grab the log element from the DOM
   logEl = document.getElementById("log");
