@@ -57,7 +57,7 @@ function preload() {
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
-  radius = width / 8 + height / 10;
+  radius = width / 7 + height / 10;
   centerX = width / 2;
   centerY = height / 2;
 
@@ -160,7 +160,7 @@ function draw() {
   for (let i = 0; i < radius; i++) {
     let alpha = map(i, 0, radius, 10, 0);
     fill(220, 225, 230, alpha);
-    arc(centerX, centerY, radius * 2 - i * 4, radius * 2 - i * 4, 0, PI);
+    arc(centerX, centerY, radius * 2 - i * 6, radius * 2 - i * 6, 0, PI);
   }
 
   //UI
