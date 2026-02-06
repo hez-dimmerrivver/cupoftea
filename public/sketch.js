@@ -49,7 +49,7 @@ socket.on("allSelections", (selections) => {
 
 const centerX = 400;
 const centerY = 400;
-const radius = windowWidth / 3;
+const radius = 300;
 
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
