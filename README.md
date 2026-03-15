@@ -14,9 +14,11 @@ https://cupoftea-izm1.onrender.com/
 Node.js / Server
 - Express: Web server framework
 - Socket.IO: Real-time online interaction
+
 Frontend Interaction / Visuals
 - p5.js: Interactive graphics and user interaction
 - Matter.js: Physics simulation
+
 Security / Deployment
 - HTTPS: Secure communication protocol
 - Render: Project deployment and launch
@@ -24,7 +26,8 @@ Security / Deployment
 ## How to Run
 1. Clone the repositor
 2. Install dependencies
-   ```npm install
+   ```
+   npm install
 
 
 ## Outcome & Sketches
