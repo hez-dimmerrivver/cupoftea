@@ -25,28 +25,13 @@ Security / Deployment
 
 ## How to Run
 1. Clone the repositor
-2. Install dependencies
+2. Start the server
    ```
    npm install
+   node server.js
+3. Deploy on Render or any Node.js hosting service
 
-
-## Outcome & Sketches
-<img width="1174" height="709" alt="cover" src="https://github.com/user-attachments/assets/34329b1f-e605-488e-a01d-41331688e2ea" />
-<img width="1512" height="778" alt="1" src="https://github.com/user-attachments/assets/330a6966-2cc8-4020-82af-0382bcbdd44c" />
-<img width="1506" height="777" alt="2" src="https://github.com/user-attachments/assets/9418de7a-4d78-40b6-aec2-d4e4051311eb" />
-<img width="1509" height="778" alt="3" src="https://github.com/user-attachments/assets/b1b18ac8-ed01-43a5-ba2d-a362970958b0" />
-<img width="1392" height="603" alt="Screenshot 2026-01-22 at 21 39 01" src="https://github.com/user-attachments/assets/1547b42d-176c-423e-ad04-566b6e7eb609" />
-<img width="1391" height="769" alt="Screenshot 2026-01-22 at 21 38 51" src="https://github.com/user-attachments/assets/6ef8cc93-e951-4e99-acce-1eb26164e6c9" />
-
-
-Full Video:
-https://vimeo.com/1153203289?share=copy&fl=sv&fe=ci
-
-
-
-
-
-## Credits / Acknowledgements
+## Acknowledgements
 
 Author: Hez (Jiang He Zhang)
 
