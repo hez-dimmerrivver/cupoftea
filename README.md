@@ -43,7 +43,7 @@ References:
 This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
 
 ## Contact / Links
-Github: https://github.com/hez-dimmerrivver/DegreeFont.git
+Github: [https://github.com/hez-dimmerrivver/DegreeFont.git](https://github.com/hez-dimmerrivver/cupoftea.git)
 
 Website: https://www.dimmerrivver.com
 
