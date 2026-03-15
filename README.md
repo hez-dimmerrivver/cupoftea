@@ -36,15 +36,7 @@ Security / Deployment
 Author: Hez (Jiang He Zhang)
 
 References: 
-[1] Helsingin Sanomat, Climate Crisis Font. Available at:https://kampanjat.hs.fi/climatefont/ [Accessed 5 Jan 2026].
-[2] Our World in Data, Wildfires. Available at: https://ourworldindata.org/wildfires [Accessed 5 Jan 2026].
-[3] NASA, Wildfires and Climate Change. Available at: https://science.nasa.gov/earth/explore/wildfires-and-climate-change/ [Accessed 4 Jan 2026].
-[4] NASA, Surface Temperature Analysis (GISTEMP v4). Available at: https://data.giss.nasa.gov/gistemp/ [Accessed 23 Dec 2025].
-[5] Hansje van Halem (2009) Doily, Available at: https://hansje.net/ [Accessed 25 Dec 2025].
-[6] Hansje van Halem (2011) Branched, Available at: https://hansje.net/ [Accessed 25 Dec 2025].
-[7] Patt Vira (2024) p5.js Coding Tutorial | Intro to textToPoints (Kinetic Typography). YouTube. Available at: https://www.youtube.com/watch?v=eZHclqx2eJY&t=478s
-[8] Jeff Thompson (2021) CP1: Object-Oriented Programming in P5JS – Random Growth. YouTube. Available at: https://www.youtube.com/watch?v=WpzdIwYnSS0
-[9] Coding Train (2024) Coding Challenge 178: Climate Spiral. YouTube. Available at: https://www.youtube.com/watch?v=rVBTxnRyOuE
+[1] Shiffman, D., 2012. The Nature of Code: Simulating Natural Systems with Processing. Chapter 6, Physics libraries.
 
 ## License
 © 2026 Hez.
