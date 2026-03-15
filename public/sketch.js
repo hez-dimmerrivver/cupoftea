@@ -1,16 +1,15 @@
 const { Engine, World, Bodies, Composite } = Matter;
 const socket = io();
 
+//update participant count
 socket.on("participantCount", (count) => {
   participantCount = count;
 });
 
-//full shared world state sent by the server, so this will be null until server responds
 let space = null;
-
 let gui;
 
-// this is a refnerece to the log text/UI stuff in the index.html file (also in public folder)
+// log text/UI stuff in the index.html file
 let logEl;
 
 let genreColors = {
@@ -108,7 +107,7 @@ function setup() {
 
   Composite.add(world, [bottom, leftWall, rightWall]);
 
-  //tick box
+  // check box
   for (let i = 0; i < genres.length; i++) {
     let genreName = genres[i];
     let col = genreColors[genres[i]];
@@ -117,8 +116,8 @@ function setup() {
     cb.style("color", col);
     cb.position(20, 90 + i * 30);
     cb.addClass("genre-checkbox");
-    cb.changed(handleCheckboxChange);
-    cb.attribute("data-genre", genreName);
+    cb.changed(handleCheckboxChange); // update change from handleCheckboxChange()
+    cb.attribute("data-genre", genreName); // update name of change from handleCheckboxChange()
     checkboxes.push(cb);
   }
 }
@@ -131,7 +130,7 @@ function handleCheckboxChange() {
 function draw() {
   background(220, 225, 230);
   textFont(font);
-  Engine.update(engine);
+  Engine.update(engine); //matter.js
 
   ///draw cup
   fill(255);
